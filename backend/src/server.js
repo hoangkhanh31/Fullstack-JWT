@@ -1,5 +1,6 @@
 import express from "express";
 import "dotenv/config";
+import bodyParser from "body-parser";
 import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
 
@@ -8,6 +9,10 @@ const PORT = process.env.PORT || 8080;
 
 //config view engine
 configViewEngine(app);
+
+//config body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //init web routes
 initWebRoutes(app);
